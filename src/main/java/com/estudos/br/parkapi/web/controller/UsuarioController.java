@@ -26,4 +26,10 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Usuario> updatePassword(@PathVariable Long id, @RequestBody Usuario usuario) {
+        Usuario user = usuarioService.editarSenha(id, usuario.getPassword());
+        return ResponseEntity.ok(user);
+    }
+
 }
