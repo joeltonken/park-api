@@ -2,6 +2,9 @@ package com.estudos.br.parkapi.web.controller;
 
 import com.estudos.br.parkapi.entity.Usuario;
 import com.estudos.br.parkapi.service.UsuarioService;
+import com.estudos.br.parkapi.web.dto.UsuarioCreateDTO;
+import com.estudos.br.parkapi.web.dto.UsuarioResponseDTO;
+import com.estudos.br.parkapi.web.dto.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +32,9 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
-        Usuario user = usuarioService.salvar(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    public ResponseEntity<UsuarioResponseDTO> create(@RequestBody UsuarioCreateDTO createDTO) {
+        Usuario user = usuarioService.salvar(UsuarioMapper.toUsuario(createDTO));
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioMapper.toDto(user));
     }
 
     @PatchMapping("/{id}")
