@@ -1,1 +1,1 @@
-delete from USUARIO;
+delete from USUARIOS;
