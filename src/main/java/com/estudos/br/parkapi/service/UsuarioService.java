@@ -2,6 +2,7 @@ package com.estudos.br.parkapi.service;
 
 import com.estudos.br.parkapi.entity.Usuario;
 import com.estudos.br.parkapi.exception.EntityNotFoundException;
+import com.estudos.br.parkapi.exception.PasswordInvalidException;
 import com.estudos.br.parkapi.exception.UsernameUniqueViolationException;
 import com.estudos.br.parkapi.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,11 +41,11 @@ public class UsuarioService {
     @Transactional
     public Usuario editarSenha(Long id, String senhaAtual, String novaSenha, String confirmaSenha) {
         if(!novaSenha.equals(confirmaSenha)) {
-            throw new RuntimeException("Senhas não coincidem.");
+            throw new PasswordInvalidException("Senhas não coincidem.");
         }
         Usuario user = buscarPorId(id);
         if (!user.getPassword().equals(senhaAtual)){
-            throw new RuntimeException("Sua senha não confere.");
+            throw new PasswordInvalidException("Sua senha não confere.");
         }
 
         user.setPassword(novaSenha);
