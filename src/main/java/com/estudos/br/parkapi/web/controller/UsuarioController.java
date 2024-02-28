@@ -8,6 +8,7 @@ import com.estudos.br.parkapi.web.dto.UsuarioSenhaDTO;
 import com.estudos.br.parkapi.web.dto.mapper.UsuarioMapper;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -41,6 +42,11 @@ public class UsuarioController {
         return ResponseEntity.ok(UsuarioMapper.toDto(user));
     }
 
+    @Operation(summary = "Listar todos os usuários", description = "Recurso para listar todos os usuários cadastrados",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Lista com todos os usuários cadastrados",
+                            content = @Content(mediaType = "application/json", array = @ArraySchema (schema = @Schema(implementation = UsuarioResponseDTO.class))))
+            })
     @GetMapping
     public ResponseEntity<List<UsuarioResponseDTO>> getAll() {
         List<Usuario> users = usuarioService.buscarTodos();
@@ -69,6 +75,8 @@ public class UsuarioController {
                     @ApiResponse(responseCode = "400", description = "Senha não confere",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
                     @ApiResponse(responseCode = "404", description = "Recurso não encontrado",
+                            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class))),
+                    @ApiResponse(responseCode = "422", description = "Campos inválidos ou mal formatados",
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorMessage.class)))
             })
     @PatchMapping("/{id}")
