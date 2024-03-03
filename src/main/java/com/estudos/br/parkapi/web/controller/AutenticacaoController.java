@@ -39,7 +39,7 @@ public class AutenticacaoController {
 
             return ResponseEntity.ok(token);
         } catch (AuthenticationException ex) {
-            log.warn("Bad Credentials from username '{}'", dto.getUsername());
+            log.warn("Credenciais incorretas do nome de usuário '{}'", dto.getUsername());
         }
         return ResponseEntity
                 .badRequest()
