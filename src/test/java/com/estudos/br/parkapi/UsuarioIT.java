@@ -144,6 +144,7 @@ public class UsuarioIT {
         List<UsuarioResponseDTO> responseBody = testClient
                 .get()
                 .uri("/api/v1/usuarios")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
                 .expectBodyList(UsuarioResponseDTO.class)
@@ -286,6 +287,7 @@ public class UsuarioIT {
         ErrorMessage responseBody = testClient
                 .patch()
                 .uri("/api/v1/usuarios/100")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("", "", ""))
                 .exchange()
@@ -299,6 +301,7 @@ public class UsuarioIT {
         responseBody = testClient
                 .patch()
                 .uri("/api/v1/usuarios/100")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("12345", "12345", "12345"))
                 .exchange()
@@ -312,6 +315,7 @@ public class UsuarioIT {
         responseBody = testClient
                 .patch()
                 .uri("/api/v1/usuarios/100")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("012345678910", "012345678910", "012345678910"))
                 .exchange()
@@ -327,9 +331,10 @@ public class UsuarioIT {
     public void editarSenha_ComSenhaInvalidas_RetornarErrorMessageComStatus400 () {
         ErrorMessage responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/101")
+                .uri("/api/v1/usuarios/100")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UsuarioSenhaDTO("654321", "654321", "000000"))
+                .bodyValue(new UsuarioSenhaDTO("123456", "123456", "000000"))
                 .exchange()
                 .expectStatus().isEqualTo(400)
                 .expectBody(ErrorMessage.class)
@@ -340,7 +345,8 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/101")
+                .uri("/api/v1/usuarios/100")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("000000", "123456", "123456"))
                 .exchange()
