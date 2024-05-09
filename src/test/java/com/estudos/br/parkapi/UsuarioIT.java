@@ -233,26 +233,52 @@ public class UsuarioIT {
         testClient
                 .patch()
                 .uri("/api/v1/usuarios/100")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
                 .exchange()
                 .expectStatus().isNoContent();
-    }
 
-    @Test
-    public void editarSenha_ComIdInexistente_RetornarErrorMessageComStatus404 () {
-        ErrorMessage responseBody = testClient
+        testClient
                 .patch()
-                .uri("/api/v1/usuarios/1000")
+                .uri("/api/v1/usuarios/101")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joel@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
                 .exchange()
-                .expectStatus().isNotFound()
+                .expectStatus().isNoContent();
+
+    }
+
+    @Test
+    public void editarSenha_ComUsuariosDiferentes_RetornarErrorMessageComStatus403 () {
+        ErrorMessage responseBody = testClient
+                .patch()
+                .uri("/api/v1/usuarios/0")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
+                .exchange()
+                .expectStatus().isForbidden()
                 .expectBody(ErrorMessage.class)
                 .returnResult().getResponseBody();
 
         org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
-        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(404);
+        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(403);
+
+        testClient
+                .patch()
+                .uri("/api/v1/usuarios/0")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joel@email.com", "123456"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
+                .exchange()
+                .expectStatus().isForbidden()
+                .expectBody(ErrorMessage.class)
+                .returnResult().getResponseBody();
+
+        org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(403);
     }
 
     @Test
