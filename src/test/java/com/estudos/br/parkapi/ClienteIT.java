@@ -2,6 +2,8 @@ package com.estudos.br.parkapi;
 
 import com.estudos.br.parkapi.web.dto.ClienteCreateDTO;
 import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
+import com.estudos.br.parkapi.web.exception.ErrorMessage;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,13 +20,13 @@ public class ClienteIT {
     WebTestClient testClient;
 
     @Test
-    public void createCliente_ComDadosValidos_RetornarClienteCriadoStatus201 () {
+    public void criarCliente_ComDadosValidos_RetornarClienteCriadoStatus201 () {
         ClienteResponseDTO responseBody = testClient
                 .post()
                 .uri("/api/v1/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new ClienteCreateDTO("Juca Fernandes", "40332850080"))
+                .bodyValue(new ClienteCreateDTO("Juca Fernandes", "84869827077"))
                 .exchange()
                 .expectStatus().isCreated()
                 .expectBody(ClienteResponseDTO.class)
@@ -33,6 +35,87 @@ public class ClienteIT {
         org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
         org.assertj.core.api.Assertions.assertThat(responseBody.getId()).isNotNull();
         org.assertj.core.api.Assertions.assertThat(responseBody.getNome()).isEqualTo("Juca Fernandes");
-        org.assertj.core.api.Assertions.assertThat(responseBody.getCpf()).isEqualTo("40332850080");
+        org.assertj.core.api.Assertions.assertThat(responseBody.getCpf()).isEqualTo("84869827077");
     }
+
+    @Test
+    public void criarCliente_ComUsuarioNaoPermitido_RetornarErrorMessageStatus403 () {
+        ErrorMessage responseBody = testClient
+                .post()
+                .uri("/api/v1/clientes")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new ClienteCreateDTO("Juca Fernandes", "84869827077"))
+                .exchange()
+                .expectStatus().isEqualTo(403)
+                .expectBody(ErrorMessage.class)
+                .returnResult().getResponseBody();
+
+        org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(403);
+    }
+
+    @Test
+    public void criarCliente_ComCpfJaCadastrado_RetornarErrorMessageStatus409 () {
+        ErrorMessage responseBody = testClient
+                .post()
+                .uri("/api/v1/clientes")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new ClienteCreateDTO("Juca Fernandes", "14931923020"))
+                .exchange()
+                .expectStatus().isEqualTo(409)
+                .expectBody(ErrorMessage.class)
+                .returnResult().getResponseBody();
+
+        org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(409);
+    }
+
+    @Test
+    public void criarCliente_ComDadosInvalidos_RetornarErrorMessageStatus422 () {
+        ErrorMessage responseBody = testClient
+                .post()
+                .uri("/api/v1/clientes")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new ClienteCreateDTO("", ""))
+                .exchange()
+                .expectStatus().isEqualTo(422)
+                .expectBody(ErrorMessage.class)
+                .returnResult().getResponseBody();
+
+        org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(422);
+
+        testClient
+                .post()
+                .uri("/api/v1/clientes")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new ClienteCreateDTO("Joe", "00000000000"))
+                .exchange()
+                .expectStatus().isEqualTo(422)
+                .expectBody(ErrorMessage.class)
+                .returnResult().getResponseBody();
+
+        org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(422);
+
+        testClient
+                .post()
+                .uri("/api/v1/clientes")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(new ClienteCreateDTO("Joelton", "149.319.230-20"))
+                .exchange()
+                .expectStatus().isEqualTo(422)
+                .expectBody(ErrorMessage.class)
+                .returnResult().getResponseBody();
+
+        org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(responseBody.getStatus()).isEqualTo(422);
+    }
+
+
 }
