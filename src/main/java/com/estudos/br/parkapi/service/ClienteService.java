@@ -2,6 +2,7 @@ package com.estudos.br.parkapi.service;
 
 import com.estudos.br.parkapi.entity.Cliente;
 import com.estudos.br.parkapi.exception.CpfUniqueViolationException;
+import com.estudos.br.parkapi.exception.EntityNotFoundException;
 import com.estudos.br.parkapi.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -24,5 +25,10 @@ public class ClienteService {
         }
     }
 
-
+    @Transactional(readOnly = true)
+    public Cliente buscarPorId(Long id) {
+        return clienteRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(String.format("Cliente id=%s não encontrado no sistema", id))
+        );
+    }
 }
