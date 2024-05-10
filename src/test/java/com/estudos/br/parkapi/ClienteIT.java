@@ -20,6 +20,21 @@ public class ClienteIT {
     WebTestClient testClient;
 
     @Test
+    public void buscarCliente_ComIdExistentePeloAdmin_RetornarClienteStatus200 () {
+        ClienteResponseDTO responseBody = testClient
+                .get()
+                .uri("/api/v1/clientes/10")
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(ClienteResponseDTO.class)
+                .returnResult().getResponseBody();
+
+        org.assertj.core.api.Assertions.assertThat(responseBody).isNotNull();
+        org.assertj.core.api.Assertions.assertThat(responseBody.getId()).isEqualTo(10);
+    }
+
+    @Test
     public void criarCliente_ComDadosValidos_RetornarClienteCriadoStatus201 () {
         ClienteResponseDTO responseBody = testClient
                 .post()
