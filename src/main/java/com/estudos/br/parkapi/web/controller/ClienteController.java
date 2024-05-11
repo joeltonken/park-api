@@ -113,4 +113,19 @@ public class ClienteController {
         return ResponseEntity.ok(PageableMapper.toDto(clientes));
     }
 
+    @Operation(summary = "Recuperar dados do cliente autenticado", description = "Requisição exige uso de um bearer token.",
+            security = @SecurityRequirement(name = "security"),
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Recurso recuperado com sucesso",
+                            content = @Content(mediaType = "application/json;charset=UTF-8", schema = @Schema(implementation = ClienteResponseDTO.class))),
+                    @ApiResponse(responseCode = "403", description = "Cliente sem permissão para acessar este recurso",
+                            content = @Content(mediaType = "application/json;charset=UTF-8", schema = @Schema(implementation = ErrorMessage.class))),
+            })
+    @GetMapping("/detalhes")
+    @PreAuthorize("hasRole('CLIENTE')")
+    public ResponseEntity<ClienteResponseDTO> getDetalhes (@AuthenticationPrincipal JwtUserDetails userDetails) {
+        Cliente cliente = clienteService.buscarPorUsuarioId(userDetails.getId());
+        return ResponseEntity.ok(ClienteMapper.toDTO(cliente));
+    }
+
 }
