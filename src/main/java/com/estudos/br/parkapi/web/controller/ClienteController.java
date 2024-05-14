@@ -8,7 +8,6 @@ import com.estudos.br.parkapi.service.UsuarioService;
 import com.estudos.br.parkapi.web.dto.ClienteCreateDTO;
 import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
 import com.estudos.br.parkapi.web.dto.PageableDto;
-import com.estudos.br.parkapi.web.dto.UsuarioResponseDTO;
 import com.estudos.br.parkapi.web.dto.mapper.ClienteMapper;
 import com.estudos.br.parkapi.web.dto.mapper.PageableMapper;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
@@ -30,8 +29,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 import static io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY;
 
@@ -118,7 +115,7 @@ public class ClienteController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Recurso recuperado com sucesso",
                             content = @Content(mediaType = "application/json;charset=UTF-8", schema = @Schema(implementation = ClienteResponseDTO.class))),
-                    @ApiResponse(responseCode = "403", description = "Cliente sem permissão para acessar este recurso",
+                    @ApiResponse(responseCode = "403", description = "Admin sem permissão para acessar este recurso",
                             content = @Content(mediaType = "application/json;charset=UTF-8", schema = @Schema(implementation = ErrorMessage.class))),
             })
     @GetMapping("/detalhes")
