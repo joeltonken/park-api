@@ -1,6 +1,5 @@
 package com.estudos.br.parkapi.web.dto.mapper;
 
-import com.estudos.br.parkapi.entity.Cliente;
 import com.estudos.br.parkapi.entity.ClienteVaga;
 import com.estudos.br.parkapi.web.dto.EstacionamentoResponseDTO;
 import com.estudos.br.parkapi.web.dto.EstacionamentoCreateDTO;
