@@ -26,7 +26,7 @@ import java.util.List;
 @Tag(name = "Usuarios", description = "Contém todas as operações relativas aos recursos para cadastro, edição e leitura de um usuário.")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("api/v1/usuarios")
+@RequestMapping("usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;

@@ -26,7 +26,7 @@ import java.net.URI;
 @Tag(name = "Vagas", description = "Contém todas as operações relativas aos recursos de uma vaga.")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("api/v1/vagas")
+@RequestMapping("vagas")
 public class VagaController {
 
     private final VagaService vagaService;
