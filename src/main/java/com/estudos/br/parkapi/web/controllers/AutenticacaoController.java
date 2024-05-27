@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.web.controller;
+package com.estudos.br.parkapi.web.controllers;
 
 import com.estudos.br.parkapi.jwt.JwtToken;
 import com.estudos.br.parkapi.jwt.JwtUserDetailsService;

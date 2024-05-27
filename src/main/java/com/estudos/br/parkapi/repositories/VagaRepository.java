@@ -1,6 +1,6 @@
-package com.estudos.br.parkapi.repository;
+package com.estudos.br.parkapi.repositories;
 
-import com.estudos.br.parkapi.entity.Vaga;
+import com.estudos.br.parkapi.entities.Vaga;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
-package com.estudos.br.parkapi.repository;
+package com.estudos.br.parkapi.repositories;
 
-import com.estudos.br.parkapi.entity.Cliente;
-import com.estudos.br.parkapi.repository.projection.ClienteProjection;
+import com.estudos.br.parkapi.entities.Cliente;
+import com.estudos.br.parkapi.repositories.projection.ClienteProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

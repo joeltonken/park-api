@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.repository.projection;
+package com.estudos.br.parkapi.repositories.projection;
 
 public interface ClienteProjection {
 

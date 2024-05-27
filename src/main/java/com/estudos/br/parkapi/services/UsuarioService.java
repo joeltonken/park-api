@@ -1,10 +1,10 @@
-package com.estudos.br.parkapi.service;
+package com.estudos.br.parkapi.services;
 
-import com.estudos.br.parkapi.entity.Usuario;
-import com.estudos.br.parkapi.exception.EntityNotFoundException;
-import com.estudos.br.parkapi.exception.PasswordInvalidException;
-import com.estudos.br.parkapi.exception.UsernameUniqueViolationException;
-import com.estudos.br.parkapi.repository.UsuarioRepository;
+import com.estudos.br.parkapi.entities.Usuario;
+import com.estudos.br.parkapi.exceptions.EntityNotFoundException;
+import com.estudos.br.parkapi.exceptions.PasswordInvalidException;
+import com.estudos.br.parkapi.exceptions.UsernameUniqueViolationException;
+import com.estudos.br.parkapi.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

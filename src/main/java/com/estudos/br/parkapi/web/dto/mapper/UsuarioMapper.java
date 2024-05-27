@@ -1,6 +1,6 @@
 package com.estudos.br.parkapi.web.dto.mapper;
 
-import com.estudos.br.parkapi.entity.Usuario;
+import com.estudos.br.parkapi.entities.Usuario;
 import com.estudos.br.parkapi.web.dto.UsuarioCreateDTO;
 import com.estudos.br.parkapi.web.dto.UsuarioResponseDTO;
 import org.modelmapper.ModelMapper;

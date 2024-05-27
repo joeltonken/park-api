@@ -1,18 +1,16 @@
-package com.estudos.br.parkapi.service;
+package com.estudos.br.parkapi.services;
 
-import com.estudos.br.parkapi.entity.Cliente;
-import com.estudos.br.parkapi.exception.CpfUniqueViolationException;
-import com.estudos.br.parkapi.exception.EntityNotFoundException;
-import com.estudos.br.parkapi.repository.ClienteRepository;
-import com.estudos.br.parkapi.repository.projection.ClienteProjection;
+import com.estudos.br.parkapi.entities.Cliente;
+import com.estudos.br.parkapi.exceptions.CpfUniqueViolationException;
+import com.estudos.br.parkapi.exceptions.EntityNotFoundException;
+import com.estudos.br.parkapi.repositories.ClienteRepository;
+import com.estudos.br.parkapi.repositories.projection.ClienteProjection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

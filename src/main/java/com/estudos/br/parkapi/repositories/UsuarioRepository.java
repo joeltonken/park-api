@@ -1,6 +1,6 @@
-package com.estudos.br.parkapi.repository;
+package com.estudos.br.parkapi.repositories;
 
-import com.estudos.br.parkapi.entity.Usuario;
+import com.estudos.br.parkapi.entities.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

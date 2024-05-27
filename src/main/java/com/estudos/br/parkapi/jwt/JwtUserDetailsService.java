@@ -1,7 +1,7 @@
 package com.estudos.br.parkapi.jwt;
 
-import com.estudos.br.parkapi.entity.Usuario;
-import com.estudos.br.parkapi.service.UsuarioService;
+import com.estudos.br.parkapi.entities.Usuario;
+import com.estudos.br.parkapi.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,8 +1,8 @@
-package com.estudos.br.parkapi.service;
+package com.estudos.br.parkapi.services;
 
-import com.estudos.br.parkapi.entity.Cliente;
-import com.estudos.br.parkapi.entity.ClienteVaga;
-import com.estudos.br.parkapi.entity.Vaga;
+import com.estudos.br.parkapi.entities.Cliente;
+import com.estudos.br.parkapi.entities.ClienteVaga;
+import com.estudos.br.parkapi.entities.Vaga;
 import com.estudos.br.parkapi.util.EstacionamentoUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

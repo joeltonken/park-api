@@ -1,6 +1,7 @@
-package com.estudos.br.parkapi.entity;
+package com.estudos.br.parkapi.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,28 +15,23 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "usuarios")
-public class Usuario implements Serializable {
+@Table(name = "vagas")
+public class Vaga implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true, length = 110)
-    private String username;
+    @Column(name = "codigo", nullable = false, unique = true, length = 4)
+    private String codigo;
 
-    @Column(name = "password", nullable = false, length = 200)
-    private String password;
-
+    @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false, length = 25)
-    private Role role = Role.ROLE_CLIENTE;
+    private StatusVaga status;
 
     @CreatedDate
     @Column(name = "data_criacao")
@@ -53,28 +49,21 @@ public class Usuario implements Serializable {
     @Column(name = "modificado_por")
     private String modificadoPor;
 
-    public enum Role {
-        ROLE_ADMIN, ROLE_CLIENTE
+    public enum StatusVaga {
+        LIVRE, OCUPADA
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id);
+        Vaga vaga = (Vaga) o;
+        return Objects.equals(id, vaga.id);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id= " + id +
-                '}';
     }
 
 }

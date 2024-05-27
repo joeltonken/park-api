@@ -1,6 +1,6 @@
 package com.estudos.br.parkapi.jwt;
 
-import com.estudos.br.parkapi.entity.Usuario;
+import com.estudos.br.parkapi.entities.Usuario;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 

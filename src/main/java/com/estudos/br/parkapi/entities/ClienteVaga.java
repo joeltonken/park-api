@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.entity;
+package com.estudos.br.parkapi.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

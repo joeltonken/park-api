@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.exception;
+package com.estudos.br.parkapi.exceptions;
 
 public class CodigoUniqueViolationException extends RuntimeException{
 

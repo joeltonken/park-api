@@ -1,15 +1,15 @@
-package com.estudos.br.parkapi.service;
+package com.estudos.br.parkapi.services;
 
-import com.estudos.br.parkapi.entity.Vaga;
-import com.estudos.br.parkapi.exception.CodigoUniqueViolationException;
-import com.estudos.br.parkapi.exception.EntityNotFoundException;
-import com.estudos.br.parkapi.repository.VagaRepository;
+import com.estudos.br.parkapi.entities.Vaga;
+import com.estudos.br.parkapi.exceptions.CodigoUniqueViolationException;
+import com.estudos.br.parkapi.exceptions.EntityNotFoundException;
+import com.estudos.br.parkapi.repositories.VagaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.estudos.br.parkapi.entity.Vaga.StatusVaga.LIVRE;
+import static com.estudos.br.parkapi.entities.Vaga.StatusVaga.LIVRE;
 
 @RequiredArgsConstructor
 @Service

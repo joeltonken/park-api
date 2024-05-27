@@ -1,8 +1,7 @@
-package com.estudos.br.parkapi.web.controller;
+package com.estudos.br.parkapi.web.controllers;
 
-import com.estudos.br.parkapi.entity.ClienteVaga;
-import com.estudos.br.parkapi.service.EstacionamentoService;
-import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
+import com.estudos.br.parkapi.entities.ClienteVaga;
+import com.estudos.br.parkapi.services.EstacionamentoService;
 import com.estudos.br.parkapi.web.dto.EstacionamentoCreateDTO;
 import com.estudos.br.parkapi.web.dto.EstacionamentoResponseDTO;
 import com.estudos.br.parkapi.web.dto.mapper.ClienteVagaMapper;

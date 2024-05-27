@@ -1,7 +1,7 @@
-package com.estudos.br.parkapi.web.controller;
+package com.estudos.br.parkapi.web.controllers;
 
-import com.estudos.br.parkapi.entity.Usuario;
-import com.estudos.br.parkapi.service.UsuarioService;
+import com.estudos.br.parkapi.entities.Usuario;
+import com.estudos.br.parkapi.services.UsuarioService;
 import com.estudos.br.parkapi.web.dto.UsuarioCreateDTO;
 import com.estudos.br.parkapi.web.dto.UsuarioResponseDTO;
 import com.estudos.br.parkapi.web.dto.UsuarioSenhaDTO;

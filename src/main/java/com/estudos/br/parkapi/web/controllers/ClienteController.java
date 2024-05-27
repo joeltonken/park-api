@@ -1,10 +1,10 @@
-package com.estudos.br.parkapi.web.controller;
+package com.estudos.br.parkapi.web.controllers;
 
-import com.estudos.br.parkapi.entity.Cliente;
+import com.estudos.br.parkapi.entities.Cliente;
 import com.estudos.br.parkapi.jwt.JwtUserDetails;
-import com.estudos.br.parkapi.repository.projection.ClienteProjection;
-import com.estudos.br.parkapi.service.ClienteService;
-import com.estudos.br.parkapi.service.UsuarioService;
+import com.estudos.br.parkapi.repositories.projection.ClienteProjection;
+import com.estudos.br.parkapi.services.ClienteService;
+import com.estudos.br.parkapi.services.UsuarioService;
 import com.estudos.br.parkapi.web.dto.ClienteCreateDTO;
 import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
 import com.estudos.br.parkapi.web.dto.PageableDto;

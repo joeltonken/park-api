@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.exception;
+package com.estudos.br.parkapi.exceptions;
 
 public class EntityNotFoundException extends RuntimeException {
 

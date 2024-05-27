@@ -1,6 +1,6 @@
 package com.estudos.br.parkapi.web.dto.mapper;
 
-import com.estudos.br.parkapi.entity.Cliente;
+import com.estudos.br.parkapi.entities.Cliente;
 import com.estudos.br.parkapi.web.dto.ClienteCreateDTO;
 import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
 import lombok.AccessLevel;

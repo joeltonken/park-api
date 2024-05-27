@@ -1,6 +1,6 @@
 package com.estudos.br.parkapi.web.dto.mapper;
 
-import com.estudos.br.parkapi.entity.Vaga;
+import com.estudos.br.parkapi.entities.Vaga;
 import com.estudos.br.parkapi.web.dto.VagaCreateDTO;
 import com.estudos.br.parkapi.web.dto.VagaResponseDTO;
 import lombok.AccessLevel;
