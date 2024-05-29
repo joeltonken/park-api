@@ -24,7 +24,7 @@ public class ClienteIT {
     public void buscarCliente_ComIdExistentePeloAdmin_RetornarClienteStatus200 () {
         ClienteResponseDTO responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes/10")
+                .uri("/clientes/10")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -39,7 +39,7 @@ public class ClienteIT {
     public void buscarCliente_ComIdInexistentePeloAdmin_RetornarErrorMessageComStatus403 () {
         ErrorMessage responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes/0")
+                .uri("/clientes/0")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joe@email.com", "123456"))
                 .exchange()
                 .expectStatus().isForbidden()
@@ -54,7 +54,7 @@ public class ClienteIT {
     public void buscarCliente_ComIdInexistentePeloCliente_RetornarErrorMessageComStatus404 () {
         ErrorMessage responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes/0")
+                .uri("/clientes/0")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isNotFound()
@@ -69,7 +69,7 @@ public class ClienteIT {
     public void buscarClientes_ComPaginacaoPeloAdmin_RetornarClientesComStatus200 () {
         PageableDto responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -83,7 +83,7 @@ public class ClienteIT {
 
         responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes?size=1&page=1")
+                .uri("/clientes?size=1&page=1")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -100,7 +100,7 @@ public class ClienteIT {
     public void buscarClientes_ComPaginacaoPeloCliente_RetornarErrorMessageComStatus403 () {
         ErrorMessage responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joe@email.com", "123456"))
                 .exchange()
                 .expectStatus().isForbidden()
@@ -115,7 +115,7 @@ public class ClienteIT {
     public void buscarCliente_ComDadosTokenDeCliente_RetornarClienteComStatus200 () {
         ClienteResponseDTO responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes/detalhes")
+                .uri("/clientes/detalhes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joe@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -132,7 +132,7 @@ public class ClienteIT {
     public void buscarCliente_ComDadosTokenDeAdmin_RetornarErrorMessageComStatus403 () {
         ErrorMessage responseBody = testClient
                 .get()
-                .uri("/api/v1/clientes/detalhes")
+                .uri("/clientes/detalhes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isForbidden()
@@ -147,7 +147,7 @@ public class ClienteIT {
     public void criarCliente_ComDadosValidos_RetornarClienteCriadoStatus201 () {
         ClienteResponseDTO responseBody = testClient
                 .post()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new ClienteCreateDTO("Juca Fernandes", "84869827077"))
@@ -166,7 +166,7 @@ public class ClienteIT {
     public void criarCliente_ComUsuarioNaoPermitido_RetornarErrorMessageStatus403 () {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new ClienteCreateDTO("Juca Fernandes", "84869827077"))
@@ -183,7 +183,7 @@ public class ClienteIT {
     public void criarCliente_ComCpfJaCadastrado_RetornarErrorMessageStatus409 () {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new ClienteCreateDTO("Juca Fernandes", "14931923020"))
@@ -200,7 +200,7 @@ public class ClienteIT {
     public void criarCliente_ComDadosInvalidos_RetornarErrorMessageStatus422 () {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new ClienteCreateDTO("", ""))
@@ -214,7 +214,7 @@ public class ClienteIT {
 
         testClient
                 .post()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new ClienteCreateDTO("Joe", "00000000000"))
@@ -228,7 +228,7 @@ public class ClienteIT {
 
         testClient
                 .post()
-                .uri("/api/v1/clientes")
+                .uri("/clientes")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joselu@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new ClienteCreateDTO("Joelton", "149.319.230-20"))

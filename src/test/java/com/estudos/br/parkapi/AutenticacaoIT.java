@@ -22,7 +22,7 @@ public class AutenticacaoIT {
     public void autenticar_ComCredenciaisValidas_RetornarTokenComStatus200() {
         JwtToken responseBody = testClient
                 .post()
-                .uri("/api/v1/auth")
+                .uri("/token/auth")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioLoginDto("joelton@email.com", "123456"))
                 .exchange()
@@ -37,7 +37,7 @@ public class AutenticacaoIT {
     public void autenticar_ComCredenciaisInvalidas_RetornarErrorMessageComStatus400() {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/auth")
+                .uri("/token/auth")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioLoginDto("invalido@email.com", "123456"))
                 .exchange()
@@ -53,7 +53,7 @@ public class AutenticacaoIT {
     public void autenticar_ComUsernameInvalido_RetornarErrorMessageComStatus422() {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/auth")
+                .uri("/token/auth")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioLoginDto("", "123456"))
                 .exchange()
@@ -66,7 +66,7 @@ public class AutenticacaoIT {
 
         responseBody = testClient
                 .post()
-                .uri("/api/v1/auth")
+                .uri("/token/auth")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioLoginDto("@email.com", "123456"))
                 .exchange()
@@ -82,7 +82,7 @@ public class AutenticacaoIT {
     public void autenticar_ComPasswordInvalido_RetornarErrorMessageComStatus422() {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/auth")
+                .uri("/token/auth")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioLoginDto("joelton@email.com", "12"))
                 .exchange()
@@ -95,7 +95,7 @@ public class AutenticacaoIT {
 
         responseBody = testClient
                 .post()
-                .uri("/api/v1/auth")
+                .uri("/token/auth")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioLoginDto("joelton@email.com", "123456890343443"))
                 .exchange()

@@ -25,7 +25,7 @@ public class UsuarioIT {
     public void createUsuario_ComUsernameEPasswordValidos_RetornarUsuarioCriadoStatus201 () {
         UsuarioResponseDTO responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("tody@email.com", "123456"))
                 .exchange()
@@ -43,7 +43,7 @@ public class UsuarioIT {
     public void createUsuario_ComUsernameRepetido_RetornarErrorMessageComStatus409 () {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("joelton@email.com", "123456"))
                 .exchange()
@@ -59,7 +59,7 @@ public class UsuarioIT {
     public void createUsuario_ComUsernameInvalido_RetornarErrorMessageStatus422 () {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("", "123456"))
                 .exchange()
@@ -72,7 +72,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("tody@", "123456"))
                 .exchange()
@@ -85,7 +85,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("tody@email.", "123456"))
                 .exchange()
@@ -101,7 +101,7 @@ public class UsuarioIT {
     public void createUsuario_ComPasswordInvalido_RetornarErrorMessageStatus422 () {
         ErrorMessage responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("tody@email.com", ""))
                 .exchange()
@@ -114,7 +114,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("tody@email.com", "123"))
                 .exchange()
@@ -127,7 +127,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .post()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioCreateDTO("tody@email.com", "111222333444555666"))
                 .exchange()
@@ -143,7 +143,7 @@ public class UsuarioIT {
     public void listarUsuarios_SemQualquerParametro_RetornarListaDeUsuariosComStatus200() {
         List<UsuarioResponseDTO> responseBody = testClient
                 .get()
-                .uri("/api/v1/usuarios")
+                .uri("/usuarios")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -158,7 +158,7 @@ public class UsuarioIT {
     public void buscarUsuario_ComIdExistente_RetornarUsuarioComStatus200 () {
         UsuarioResponseDTO responseBody = testClient
                 .get()
-                .uri("/api/v1/usuarios/100")
+                .uri("/usuarios/100")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -172,7 +172,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .get()
-                .uri("/api/v1/usuarios/101")
+                .uri("/usuarios/101")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -186,7 +186,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .get()
-                .uri("/api/v1/usuarios/101")
+                .uri("/usuarios/101")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joel@email.com", "123456"))
                 .exchange()
                 .expectStatus().isOk()
@@ -203,7 +203,7 @@ public class UsuarioIT {
     public void buscarUsuario_ComIdInexistente_RetornarErrorMessageComStatus404 () {
         ErrorMessage responseBody = testClient
                 .get()
-                .uri("/api/v1/usuarios/1000")
+                .uri("/usuarios/1000")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .exchange()
                 .expectStatus().isNotFound()
@@ -218,7 +218,7 @@ public class UsuarioIT {
     public void buscarUsuario_ComUsuarioClienteBuscandoOutroCliente_RetornarErrorMessageComStatus403 () {
         ErrorMessage responseBody = testClient
                 .get()
-                .uri("/api/v1/usuarios/102")
+                .uri("/usuarios/102")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joel@email.com", "123456"))
                 .exchange()
                 .expectStatus().isForbidden()
@@ -233,7 +233,7 @@ public class UsuarioIT {
     public void editarSenha_ComDadosValidos_RetornarStatus204 () {
         testClient
                 .patch()
-                .uri("/api/v1/usuarios/100")
+                .uri("/usuarios/100")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
@@ -242,7 +242,7 @@ public class UsuarioIT {
 
         testClient
                 .patch()
-                .uri("/api/v1/usuarios/101")
+                .uri("/usuarios/101")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joel@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
@@ -255,7 +255,7 @@ public class UsuarioIT {
     public void editarSenha_ComUsuariosDiferentes_RetornarErrorMessageComStatus403 () {
         ErrorMessage responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/0")
+                .uri("/usuarios/0")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
@@ -269,7 +269,7 @@ public class UsuarioIT {
 
         testClient
                 .patch()
-                .uri("/api/v1/usuarios/0")
+                .uri("/usuarios/0")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joel@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("123456", "123458", "123458"))
@@ -286,7 +286,7 @@ public class UsuarioIT {
     public void editarSenha_ComCamposInvalidos_RetornarErrorMessageComStatus422 () {
         ErrorMessage responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/100")
+                .uri("/usuarios/100")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("", "", ""))
@@ -300,7 +300,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/100")
+                .uri("/usuarios/100")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("12345", "12345", "12345"))
@@ -314,7 +314,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/100")
+                .uri("/usuarios/100")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("012345678910", "012345678910", "012345678910"))
@@ -331,7 +331,7 @@ public class UsuarioIT {
     public void editarSenha_ComSenhaInvalidas_RetornarErrorMessageComStatus400 () {
         ErrorMessage responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/100")
+                .uri("/usuarios/100")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("123456", "123456", "000000"))
@@ -345,7 +345,7 @@ public class UsuarioIT {
 
         responseBody = testClient
                 .patch()
-                .uri("/api/v1/usuarios/100")
+                .uri("/usuarios/100")
                 .headers(JwtAuthentication.getHeaderAuthentication(testClient, "joelton@email.com", "123456"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(new UsuarioSenhaDTO("000000", "123456", "123456"))
