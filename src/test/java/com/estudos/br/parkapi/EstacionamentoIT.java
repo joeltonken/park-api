@@ -82,4 +82,44 @@ public class EstacionamentoIT {
                 .jsonPath("method").isEqualTo("POST");
     }
 
+    @Test
+    public void criarCheckin_ComCpfInexistente_RetornarErrorStatus404() {
+        EstacionamentoCreateDTO createDTO = EstacionamentoCreateDTO.builder()
+                .placa("WER-2024").marca("FIAT").modelo("PALIO 1.0")
+                .cor("AZUL").clienteCpf("31436684072")
+                .build();
+
+        testClient.post().uri("/estacionamentos/check-in")
+                .contentType(MediaType.APPLICATION_JSON)
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "ana@email.com.br", "123456"))
+                .bodyValue(createDTO)
+                .exchange()
+                .expectStatus().isNotFound()
+                .expectBody()
+                .jsonPath("status").isEqualTo("404")
+                .jsonPath("path").isEqualTo("/estacionamentos/check-in")
+                .jsonPath("method").isEqualTo("POST");
+    }
+
+    @Sql(scripts = "/sql/estacionamentos/estacionamento-insert-vagas-ocupadas.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "/sql/estacionamentos/estacionamento-delete-vagas-ocupadas.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    @Test
+    public void criarCheckin_ComVagasOcupadas_RetornarErrorStatus403() {
+        EstacionamentoCreateDTO createDTO = EstacionamentoCreateDTO.builder()
+                .placa("WER-2024").marca("FIAT").modelo("PALIO 1.0")
+                .cor("AZUL").clienteCpf("09191773016")
+                .build();
+
+        testClient.post().uri("/estacionamentos/check-in")
+                .contentType(MediaType.APPLICATION_JSON)
+                .headers(JwtAuthentication.getHeaderAuthentication(testClient, "ana@email.com.br", "123456"))
+                .bodyValue(createDTO)
+                .exchange()
+                .expectStatus().isNotFound()
+                .expectBody()
+                .jsonPath("status").isEqualTo("404")
+                .jsonPath("path").isEqualTo("/estacionamentos/check-in")
+                .jsonPath("method").isEqualTo("POST");
+    }
+
 }
