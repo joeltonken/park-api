@@ -3,7 +3,10 @@ package com.estudos.br.parkapi.services;
 import com.estudos.br.parkapi.entities.ClienteVaga;
 import com.estudos.br.parkapi.exceptions.EntityNotFoundException;
 import com.estudos.br.parkapi.repositories.ClienteVagaRepository;
+import com.estudos.br.parkapi.repositories.projection.ClienteVagaProjection;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,4 +35,8 @@ public class ClienteVagaService {
         return clienteVagaRepository.countByClienteCpfAndDataSaidaIsNotNull(cpf);
     }
 
+    @Transactional(readOnly = true)
+    public Page<ClienteVagaProjection> buscarTodosPorClienteCpf(String cpf, Pageable pageable) {
+        return clienteVagaRepository.findAllByClienteCpf(cpf, pageable);
+    }
 }
