@@ -1,7 +1,7 @@
 package com.estudos.br.parkapi;
 
 import com.estudos.br.parkapi.jwt.JwtToken;
-import com.estudos.br.parkapi.web.dto.UsuarioLoginDto;
+import com.estudos.br.parkapi.web.dtos.UsuarioLoginDto;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

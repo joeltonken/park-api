@@ -1,6 +1,6 @@
-package com.estudos.br.parkapi.web.dto.mapper;
+package com.estudos.br.parkapi.web.dtos.mapper;
 
-import com.estudos.br.parkapi.web.dto.PageableDto;
+import com.estudos.br.parkapi.web.dtos.PageableDto;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;

@@ -1,6 +1,6 @@
 package com.estudos.br.parkapi;
 
-import com.estudos.br.parkapi.web.dto.EstacionamentoCreateDTO;
+import com.estudos.br.parkapi.web.dtos.EstacionamentoCreateDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -2,9 +2,9 @@ package com.estudos.br.parkapi.web.controllers;
 
 import com.estudos.br.parkapi.entities.Vaga;
 import com.estudos.br.parkapi.services.VagaService;
-import com.estudos.br.parkapi.web.dto.VagaCreateDTO;
-import com.estudos.br.parkapi.web.dto.VagaResponseDTO;
-import com.estudos.br.parkapi.web.dto.mapper.VagaMapper;
+import com.estudos.br.parkapi.web.dtos.VagaCreateDTO;
+import com.estudos.br.parkapi.web.dtos.VagaResponseDTO;
+import com.estudos.br.parkapi.web.dtos.mapper.VagaMapper;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.headers.Header;

@@ -1,7 +1,6 @@
 package com.estudos.br.parkapi;
 
-import com.estudos.br.parkapi.web.dto.VagaCreateDTO;
-import com.estudos.br.parkapi.web.dto.VagaResponseDTO;
+import com.estudos.br.parkapi.web.dtos.VagaCreateDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

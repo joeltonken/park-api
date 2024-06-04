@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.web.dto;
+package com.estudos.br.parkapi.web.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

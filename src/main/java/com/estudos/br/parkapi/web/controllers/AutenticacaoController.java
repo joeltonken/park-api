@@ -2,8 +2,8 @@ package com.estudos.br.parkapi.web.controllers;
 
 import com.estudos.br.parkapi.jwt.JwtToken;
 import com.estudos.br.parkapi.jwt.JwtUserDetailsService;
-import com.estudos.br.parkapi.web.dto.UsuarioLoginDto;
-import com.estudos.br.parkapi.web.dto.UsuarioResponseDTO;
+import com.estudos.br.parkapi.web.dtos.UsuarioLoginDto;
+import com.estudos.br.parkapi.web.dtos.UsuarioResponseDTO;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

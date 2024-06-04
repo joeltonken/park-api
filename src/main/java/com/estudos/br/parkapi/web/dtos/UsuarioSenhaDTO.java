@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.web.dto;
+package com.estudos.br.parkapi.web.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,8 +1,8 @@
-package com.estudos.br.parkapi.web.dto.mapper;
+package com.estudos.br.parkapi.web.dtos.mapper;
 
 import com.estudos.br.parkapi.entities.Cliente;
-import com.estudos.br.parkapi.web.dto.ClienteCreateDTO;
-import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
+import com.estudos.br.parkapi.web.dtos.ClienteCreateDTO;
+import com.estudos.br.parkapi.web.dtos.ClienteResponseDTO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;

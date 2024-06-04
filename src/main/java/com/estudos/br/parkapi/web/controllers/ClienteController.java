@@ -5,11 +5,11 @@ import com.estudos.br.parkapi.jwt.JwtUserDetails;
 import com.estudos.br.parkapi.repositories.projection.ClienteProjection;
 import com.estudos.br.parkapi.services.ClienteService;
 import com.estudos.br.parkapi.services.UsuarioService;
-import com.estudos.br.parkapi.web.dto.ClienteCreateDTO;
-import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
-import com.estudos.br.parkapi.web.dto.PageableDto;
-import com.estudos.br.parkapi.web.dto.mapper.ClienteMapper;
-import com.estudos.br.parkapi.web.dto.mapper.PageableMapper;
+import com.estudos.br.parkapi.web.dtos.ClienteCreateDTO;
+import com.estudos.br.parkapi.web.dtos.ClienteResponseDTO;
+import com.estudos.br.parkapi.web.dtos.PageableDto;
+import com.estudos.br.parkapi.web.dtos.mapper.ClienteMapper;
+import com.estudos.br.parkapi.web.dtos.mapper.PageableMapper;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
 
 import io.swagger.v3.oas.annotations.Operation;

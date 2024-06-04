@@ -1,7 +1,7 @@
 package com.estudos.br.parkapi;
 
 import com.estudos.br.parkapi.jwt.JwtToken;
-import com.estudos.br.parkapi.web.dto.UsuarioLoginDto;
+import com.estudos.br.parkapi.web.dtos.UsuarioLoginDto;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import org.springframework.http.HttpHeaders;

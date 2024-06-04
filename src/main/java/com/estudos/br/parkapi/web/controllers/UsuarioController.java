@@ -2,10 +2,10 @@ package com.estudos.br.parkapi.web.controllers;
 
 import com.estudos.br.parkapi.entities.Usuario;
 import com.estudos.br.parkapi.services.UsuarioService;
-import com.estudos.br.parkapi.web.dto.UsuarioCreateDTO;
-import com.estudos.br.parkapi.web.dto.UsuarioResponseDTO;
-import com.estudos.br.parkapi.web.dto.UsuarioSenhaDTO;
-import com.estudos.br.parkapi.web.dto.mapper.UsuarioMapper;
+import com.estudos.br.parkapi.web.dtos.UsuarioCreateDTO;
+import com.estudos.br.parkapi.web.dtos.UsuarioResponseDTO;
+import com.estudos.br.parkapi.web.dtos.UsuarioSenhaDTO;
+import com.estudos.br.parkapi.web.dtos.mapper.UsuarioMapper;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;

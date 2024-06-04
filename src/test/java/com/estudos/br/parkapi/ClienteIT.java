@@ -1,8 +1,8 @@
 package com.estudos.br.parkapi;
 
-import com.estudos.br.parkapi.web.dto.ClienteCreateDTO;
-import com.estudos.br.parkapi.web.dto.ClienteResponseDTO;
-import com.estudos.br.parkapi.web.dto.PageableDto;
+import com.estudos.br.parkapi.web.dtos.ClienteCreateDTO;
+import com.estudos.br.parkapi.web.dtos.ClienteResponseDTO;
+import com.estudos.br.parkapi.web.dtos.PageableDto;
 import com.estudos.br.parkapi.web.exception.ErrorMessage;
 
 import org.junit.jupiter.api.Test;
