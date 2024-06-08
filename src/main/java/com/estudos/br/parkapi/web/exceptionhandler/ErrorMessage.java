@@ -1,4 +1,4 @@
-package com.estudos.br.parkapi.web.exception;
+package com.estudos.br.parkapi.web.exceptionhandler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.servlet.http.HttpServletRequest;

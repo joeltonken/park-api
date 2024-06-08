@@ -6,7 +6,7 @@ import com.estudos.br.parkapi.web.dtos.UsuarioCreateDTO;
 import com.estudos.br.parkapi.web.dtos.UsuarioResponseDTO;
 import com.estudos.br.parkapi.web.dtos.UsuarioSenhaDTO;
 import com.estudos.br.parkapi.web.dtos.mapper.UsuarioMapper;
-import com.estudos.br.parkapi.web.exception.ErrorMessage;
+import com.estudos.br.parkapi.web.exceptionhandler.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;

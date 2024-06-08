@@ -3,7 +3,7 @@ package com.estudos.br.parkapi;
 import com.estudos.br.parkapi.web.dtos.UsuarioCreateDTO;
 import com.estudos.br.parkapi.web.dtos.UsuarioResponseDTO;
 import com.estudos.br.parkapi.web.dtos.UsuarioSenhaDTO;
-import com.estudos.br.parkapi.web.exception.ErrorMessage;
+import com.estudos.br.parkapi.web.exceptionhandler.ErrorMessage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

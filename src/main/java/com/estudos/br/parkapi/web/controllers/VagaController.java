@@ -5,7 +5,7 @@ import com.estudos.br.parkapi.services.VagaService;
 import com.estudos.br.parkapi.web.dtos.VagaCreateDTO;
 import com.estudos.br.parkapi.web.dtos.VagaResponseDTO;
 import com.estudos.br.parkapi.web.dtos.mapper.VagaMapper;
-import com.estudos.br.parkapi.web.exception.ErrorMessage;
+import com.estudos.br.parkapi.web.exceptionhandler.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.headers.Header;
 import io.swagger.v3.oas.annotations.media.Content;

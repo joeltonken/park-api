@@ -10,7 +10,7 @@ import com.estudos.br.parkapi.web.dtos.ClienteResponseDTO;
 import com.estudos.br.parkapi.web.dtos.PageableDto;
 import com.estudos.br.parkapi.web.dtos.mapper.ClienteMapper;
 import com.estudos.br.parkapi.web.dtos.mapper.PageableMapper;
-import com.estudos.br.parkapi.web.exception.ErrorMessage;
+import com.estudos.br.parkapi.web.exceptionhandler.ErrorMessage;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

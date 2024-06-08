@@ -3,7 +3,7 @@ package com.estudos.br.parkapi;
 import com.estudos.br.parkapi.web.dtos.ClienteCreateDTO;
 import com.estudos.br.parkapi.web.dtos.ClienteResponseDTO;
 import com.estudos.br.parkapi.web.dtos.PageableDto;
-import com.estudos.br.parkapi.web.exception.ErrorMessage;
+import com.estudos.br.parkapi.web.exceptionhandler.ErrorMessage;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

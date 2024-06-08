@@ -4,7 +4,7 @@ import com.estudos.br.parkapi.jwt.JwtToken;
 import com.estudos.br.parkapi.jwt.JwtUserDetailsService;
 import com.estudos.br.parkapi.web.dtos.UsuarioLoginDto;
 import com.estudos.br.parkapi.web.dtos.UsuarioResponseDTO;
-import com.estudos.br.parkapi.web.exception.ErrorMessage;
+import com.estudos.br.parkapi.web.exceptionhandler.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
