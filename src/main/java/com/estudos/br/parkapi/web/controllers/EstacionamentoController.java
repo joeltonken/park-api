@@ -10,7 +10,7 @@ import com.estudos.br.parkapi.web.dtos.EstacionamentoResponseDTO;
 import com.estudos.br.parkapi.web.dtos.PageableDto;
 import com.estudos.br.parkapi.web.dtos.mapper.ClienteVagaMapper;
 import com.estudos.br.parkapi.web.dtos.mapper.PageableMapper;
-import com.estudos.br.parkapi.web.exception.ErrorMessage;
+import com.estudos.br.parkapi.web.exceptionhandler.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.headers.Header;
@@ -151,6 +151,27 @@ public class EstacionamentoController {
         return ResponseEntity.ok(dto);
     }
 
+
+    @Operation(summary = "Localizar os registros de estacionamentos do cliente logado", description = "Localizar os registros de estacionamentos do cliente logado.",
+            security = @SecurityRequirement(name = "security"),
+            parameters = {
+                    @Parameter(in = QUERY, name = "page",
+                            description = "Representa a página retornada",
+                            content = @Content(schema = @Schema(type = "integer", defaultValue = "0"))),
+                    @Parameter(in = QUERY, name = "size",
+                            description = "Representa o total de elementos por página",
+                            content = @Content(schema = @Schema(type = "integer", defaultValue = "5"))),
+                    @Parameter(in = QUERY, name = "sort",
+                            description = "Campo padrão de ordenação 'dataEntrada,asc'.",
+                            array = @ArraySchema(schema = @Schema(type = "string", defaultValue = "dataEntrada,asc")),
+                            hidden = true)
+            },
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Recurso localizado com sucesso",
+                            content = @Content(mediaType = "application/json;charset=UTF-8", schema = @Schema(implementation = PageableDto.class))),
+                    @ApiResponse(responseCode = "403", description = "Recurso não permitido ao perfil do CLIENTE",
+                            content = @Content(mediaType = "application/json;charset=UTF-8", schema = @Schema(implementation = ErrorMessage.class))),
+            })
     @GetMapping
     @PreAuthorize("hasRole('CLIENTE')")
     public ResponseEntity<PageableDto> getAllEstacionamentosDoCliente (@AuthenticationPrincipal JwtUserDetails user, @PageableDefault(size = 5,
