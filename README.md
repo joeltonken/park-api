@@ -1,6 +1,7 @@
 # Park-Api
 
-Bem-vindo ao projeto de uma API de estacionamento desenvolvida com Spring Boot 3 e Java 17.
+O projeto *Park-API* é uma API desenvolvida para gerenciamento de estacionamento de carros, que permite
+registrar a entrada e saída de veículos, calcular o tempo de permanência e realizar o controle de vagas disponíveis. 
 
 ## Configuração do Ambiente
 
@@ -23,4 +24,6 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina antes d
 
 3. Certifique-se de que a versão do Java está configurada para 17.
 
-4. Execute o Maven para baixar as dependências do projeto
+4. Navegue até o diretório do projeto.
+
+5. Execute mvn spring-boot:run no terminal ou aperte em "Run" de sua IDE a partir da classe "ParkApiApplication". 
