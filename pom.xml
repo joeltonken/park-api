@@ -100,6 +100,12 @@
 			<optional>true</optional>
 			<!-- Biblioteca para reduzir o código boilerplate (getter, setter, etc.) -->
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>net.sf.jasperreports</groupId>-->
+<!--			<artifactId>jasperreports</artifactId>-->
+<!--			<version>6.21.3</version>-->
+<!--			&lt;!&ndash; Biblioteca para uso do JasperReports &ndash;&gt;-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

@@ -63,4 +63,16 @@ public class ApiExceptionHandler {
                 .body(new ErrorMessage(request, HttpStatus.UNPROCESSABLE_ENTITY, "Campos inválido(s)!", result));
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorMessage> internalServerErrorException(Exception ex, HttpServletRequest request) {
+        ErrorMessage error = new ErrorMessage(
+                request, HttpStatus.INTERNAL_SERVER_ERROR, HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+
+        log.error("Internal Server Error {} {} ", error, ex);
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(error);
+    }
+
 }
