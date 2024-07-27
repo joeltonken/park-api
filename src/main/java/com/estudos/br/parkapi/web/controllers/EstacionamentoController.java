@@ -6,7 +6,7 @@ import com.estudos.br.parkapi.repositories.projection.ClienteVagaProjection;
 import com.estudos.br.parkapi.services.ClienteService;
 import com.estudos.br.parkapi.services.ClienteVagaService;
 import com.estudos.br.parkapi.services.EstacionamentoService;
-//import com.estudos.br.parkapi.services.JasperService;
+import com.estudos.br.parkapi.services.JasperService;
 import com.estudos.br.parkapi.web.dtos.EstacionamentoCreateDTO;
 import com.estudos.br.parkapi.web.dtos.EstacionamentoResponseDTO;
 import com.estudos.br.parkapi.web.dtos.PageableDto;
@@ -52,7 +52,7 @@ public class EstacionamentoController {
     private final EstacionamentoService estacionamentoService;
     private final ClienteVagaService clienteVagaService;
     private final ClienteService clienteService;
-    //private final JasperService jasperService;
+    private final JasperService jasperService;
 
     @Operation(summary = "Operação de check-in", description = "Recurso para dar entrada de um veículo no estacionamento. " +
             "Requisição exige uso de um bearer token.",
@@ -189,20 +189,20 @@ public class EstacionamentoController {
         return ResponseEntity.ok(dto);
     }
 
-//    @GetMapping("/relatorio")
-//    @PreAuthorize("hasRole('CLIENTE')")
-//    public ResponseEntity<Void> getRelatorio(HttpServletResponse response, @AuthenticationPrincipal JwtUserDetails user) throws IOException {
-//        String cpf = clienteService.buscarPorUsuarioId(user.getId()).getCpf();
-//        jasperService.addParams("CPF", cpf);
-//
-//        byte[] bytes = jasperService.gerarPdf();
-//
-//        response.setContentType(MediaType.APPLICATION_PDF_VALUE);
-//        response.setHeader("Content-disposition", "inline; filename="
-//                + System.currentTimeMillis() + ".pdf");
-//        response.getOutputStream().write(bytes);
-//
-//        return ResponseEntity.ok().build();
-//    }
+    @GetMapping("/relatorio")
+    @PreAuthorize("hasRole('CLIENTE')")
+    public ResponseEntity<Void> getRelatorio(HttpServletResponse response, @AuthenticationPrincipal JwtUserDetails user) throws IOException {
+        String cpf = clienteService.buscarPorUsuarioId(user.getId()).getCpf();
+        jasperService.addParams("CPF", cpf);
+
+        byte[] bytes = jasperService.gerarPdf();
+
+        response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+        response.setHeader("Content-disposition", "inline; filename="
+                + System.currentTimeMillis() + ".pdf");
+        response.getOutputStream().write(bytes);
+
+        return ResponseEntity.ok().build();
+    }
 
 }
