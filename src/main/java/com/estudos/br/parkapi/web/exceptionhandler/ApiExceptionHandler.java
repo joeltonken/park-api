@@ -1,5 +1,6 @@
 package com.estudos.br.parkapi.web.exceptionhandler;
 
+import com.estudos.br.parkapi.entities.Vaga;
 import com.estudos.br.parkapi.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -67,11 +68,14 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(VagaDisponivelException.class)
     public ResponseEntity<ErrorMessage> vagaDisponivelException(RuntimeException ex, HttpServletRequest request) {
-        log.error("Api Error - ", ex);
+        String message = messageSource.getMessage(
+                "exception.vagaDisponivelException",
+                null,
+                request.getLocale());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, ex.getMessage()));
+                .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, message));
     }
 
     @ExceptionHandler({UsernameUniqueViolationException.class, CpfUniqueViolationException.class})
