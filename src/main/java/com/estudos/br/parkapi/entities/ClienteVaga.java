@@ -26,7 +26,7 @@ public class ClienteVaga {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "num_recibo", nullable = false, unique = true, length = 15)
+    @Column(name = "numero_recibo", nullable = false, unique = true, length = 15)
     private String recibo;
 
     @Column(name = "placa", nullable = false, length = 8)

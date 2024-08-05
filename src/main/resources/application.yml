@@ -1,0 +1,41 @@
+# LOCALE
+spring:
+  web:
+    locale-resolver: fixed
+    locale: pt_BR
+
+  # MySQL Database Connection Properties
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/park_api?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Sao_Paulo
+    username: root
+    password: admin123
+
+  # JPA
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update # Mudar para update ou create, dependendo da necessidade
+    open-in-view: false
+    defer-datasource-initialization: true # Ajuda a rodar scripts
+
+  # SQL initialization
+  sql:
+    init:
+      mode: never # Alterar para always para inserção de dados do data.sql
+
+  # Springdoc OpenApi & Swagger
+  doc:
+    swagger-ui:
+      path: /docs-park.html
+    api-docs:
+      path: /docs-park
+    packages-to-scan: com.estudos.br.parkapi.web.controller
+
+# Server configuration
+server:
+  servlet:
+    context-path: /api/v1
