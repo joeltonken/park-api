@@ -35,6 +35,11 @@ spring:
       path: /docs-park
     packages-to-scan: com.estudos.br.parkapi.web.controller
 
+# Messages i18n
+  messages:
+    basename: messages
+    encoding: UTF-8
+
 # Server configuration
 server:
   servlet:
