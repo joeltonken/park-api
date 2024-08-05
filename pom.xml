@@ -103,11 +103,15 @@
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-			<version>6.21.3</version>
+			<version>6.20.5</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.fasterxml.jackson.dataformat</groupId>
 					<artifactId>jackson-dataformat-xml</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
 			<!-- Biblioteca para uso do JasperReports -->
