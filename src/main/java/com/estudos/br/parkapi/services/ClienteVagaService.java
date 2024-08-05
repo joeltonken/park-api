@@ -2,6 +2,7 @@ package com.estudos.br.parkapi.services;
 
 import com.estudos.br.parkapi.entities.ClienteVaga;
 import com.estudos.br.parkapi.exceptions.EntityNotFoundException;
+import com.estudos.br.parkapi.exceptions.ReciboCheckInNotFoundException;
 import com.estudos.br.parkapi.repositories.ClienteVagaRepository;
 import com.estudos.br.parkapi.repositories.projection.ClienteVagaProjection;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,7 @@ public class ClienteVagaService {
     public ClienteVaga buscarPorRecibo(String recibo) {
         return clienteVagaRepository.findByReciboAndDataSaidaIsNull(recibo)
                 .orElseThrow(
-                        () -> new EntityNotFoundException(String.format("Recibo '%s' não encontrado no sistema ou check-out já realizado", recibo)
-                    )
+                        () -> new ReciboCheckInNotFoundException(recibo)
                 );
     }
 
